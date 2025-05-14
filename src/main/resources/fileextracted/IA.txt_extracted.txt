@@ -1,0 +1,6 @@
+{
+  "filename": "IA.txt",
+  "message": "Seuls les fichiers PDF et TXT sont accept\u00e9s",
+  "mime_type": "text/x-python",
+  "status": "unsupported"
+}
