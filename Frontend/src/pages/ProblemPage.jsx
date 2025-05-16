@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import FileUploader from '../components/FileUploader';
-import Result from '../components/Result';
 import axios from 'axios';
+import '../styles/Problem.css'; // Assurez-vous d'avoir ce fichier CSS
+import PDFDownloadButton from '../components/generatePdf';
+
 
 const ProblemPage = () => {
     const [problem, setProblem] = useState(null);
@@ -58,15 +60,21 @@ const ProblemPage = () => {
             )}
 
             {problem && (
-                <div className="problem-result">
-                    <h2>{problem.title}</h2>
-                    <div className="problem-content">
-                        {problem.content.split('\n').map((line, i) => (
-                            <p key={i}>{line}</p>
-                        ))}
-                    </div>
-                </div>
-            )}
+    <>
+        <div className="problem-result">
+            <h2>{problem.title}</h2>
+            <div className="problem-content">
+                {problem.content.split('\n').map((line, i) => (
+                    <p key={i}>{line}</p>
+                ))}
+            </div>
+        </div>
+        <PDFDownloadButton
+            title={problem.title}
+            content={problem.content}
+        />
+    </>
+)}
         </div>
     );
 };

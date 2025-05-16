@@ -60,7 +60,7 @@ const Dashboard = () => {
         if (isAuthenticated) {
             navigate(`/${path}`);
         } else {
-            navigate('/login');
+            navigate('/');
         }
     };
 
@@ -68,7 +68,7 @@ const Dashboard = () => {
         <div className="dashboard">
             <h1 className="dashboard-title">
                 {isAuthenticated 
-                    ? `Bienvenue, l'enseignant ${user.prenom} ${user.nom}` 
+                    ? `Bienvenue, ${user.prenom} ${user.nom}` 
                     : 'Apprenez à votre rythme'}
             </h1>
             <p className="dashboard-subtitle">

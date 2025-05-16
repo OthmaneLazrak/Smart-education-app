@@ -19,14 +19,11 @@ import java.util.List;
 public class SummaryController {
 
     private static final String SUMMARY_PROMPT =
-            "You are an expert in creating educational summaries. " +
-                    "Analyze the following text and generate a summary:\\n%s\\n\\n" +
-                    "The summary must:\\n" +
-                    "1. Capture essential points\\n" +
-                    "2. Be clear and concise\\n" +
-                    "3. Be logically organized\\n" +
-                    "4. Highlight key concepts\\n" +
-                    "5. Be written in French";
+            "Résumé ce texte : %s\\n\\n\" +\n" +
+                    "    \"Format :\\n\" +\n" +
+                    "    \"- Points essentiels\\n\" +\n" +
+                    "    \"- Structure logique\\n\" +\n" +
+                    "    \"- Concepts clés";
 
     @Autowired
     private SummaryRepository summaryRepository;

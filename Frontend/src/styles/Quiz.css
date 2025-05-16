@@ -1,0 +1,124 @@
+.quiz-page {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-page h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 1rem;
+}
+
+.file-uploader {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 2px dashed #cbd5e0;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.file-uploader:hover {
+  border-color: #3498db;
+  background: #f1f7fc;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background: #e8f4fd;
+  border-radius: 8px;
+}
+
+.loading p {
+  color: #2980b9;
+  margin-left: 1rem;
+  font-weight: 500;
+}
+
+.loading::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #3498db;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+.error-message {
+  background: #fde8e8;
+  color: #c0392b;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  border-left: 4px solid #e74c3c;
+  font-weight: 500;
+}
+
+.quiz-result {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-result h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3498db;
+}
+
+.quiz-content {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #34495e;
+}
+
+.quiz-content p {
+  margin: 0.8rem 0;
+  padding: 0.5rem 0;
+}
+
+.quiz-content p:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Style pour les appareils mobiles */
+@media (max-width: 768px) {
+  .quiz-page {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .quiz-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .quiz-result {
+    padding: 1rem;
+  }
+
+  .quiz-content {
+    font-size: 1rem;
+  }
+}

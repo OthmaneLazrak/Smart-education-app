@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import '../styles/FileUploader.css'; // Assurez-vous d'avoir ce fichier CSS
 
 const FileUploader = ({ 
   onSuccess, 

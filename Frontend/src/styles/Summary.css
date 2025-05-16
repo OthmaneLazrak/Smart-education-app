@@ -1,0 +1,135 @@
+.summary-page {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.summary-page h1 {
+  color: #2c3e50;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #3498db;
+}
+
+.upload-section {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 2px dashed #a0aec0;
+  transition: border-color 0.3s ease;
+}
+
+.upload-section:hover {
+  border-color: #3498db;
+}
+
+.loading {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  background: #e8f6ef;
+  color: #27ae60;
+  font-weight: 500;
+}
+
+.loading::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  border: 3px solid #3498db;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+.error-message {
+  background: #fdeaea;
+  color: #e74c3c;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  border-left: 4px solid #e74c3c;
+}
+
+.summary-result {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.summary-result h2 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #3498db;
+}
+
+.summary-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #34495e;
+}
+
+.summary-content p {
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+}
+
+.summary-content p:not(:last-child) {
+  border-bottom: 1px solid #edf2f7;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media print {
+  .summary-page {
+    margin: 0;
+    padding: 1rem;
+    box-shadow: none;
+  }
+
+  .upload-section,
+  .loading,
+  .error-message {
+    display: none;
+  }
+
+  .summary-result {
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .summary-page {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .summary-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .summary-result {
+    padding: 1.5rem;
+  }
+
+  .summary-content {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}

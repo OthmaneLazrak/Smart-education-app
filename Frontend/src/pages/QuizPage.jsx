@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import FileUploader from '../components/FileUploader';
-import Result from '../components/Result';
 import axios from 'axios';
+import '../styles/Quiz.css'; // Assurez-vous d'avoir ce fichier CSS
+import PDFDownloadButton from '../components/generatePdf';
+
+
 
 
 const QuizPage = () => {
@@ -60,15 +63,21 @@ const QuizPage = () => {
             )}
 
             {quiz && (
-                <div className="quiz-result">
-                    <h2>{quiz.title}</h2>
-                    <div className="quiz-content">
-                        {quiz.content.split('\n').map((line, i) => (
-                            <p key={i}>{line}</p>
-                        ))}
-                    </div>
-                </div>
-            )}
+    <>
+        <div className="quiz-result">
+            <h2>{quiz.title}</h2>
+            <div className="quiz-content">
+                {quiz.content.split('\n').map((line, i) => (
+                    <p key={i}>{line}</p>
+                ))}
+            </div>
+        </div>
+        <PDFDownloadButton
+            title={quiz.title}
+            content={quiz.content}
+        />
+    </>
+)}
         </div>
     );
 };

@@ -19,14 +19,12 @@ import java.util.List;
 public class ProblemeController {
 
     private static final String PROBLEM_PROMPT =
-            "You are an expert in creating educational problems. " +
-                    "Analyze the following text and generate a relevant problem:\\n%s\\n\\n" +
-                    "Include:\\n" +
-                    "1. A clear and detailed problem statement\\n" +
-                    "2. Specific questions to solve\\n" +
-                    "3. Hints to guide reflection\\n" +
-                    "4. A detailed solution at the end\\n" +
-                    "5. Write everything in French";
+            "YCrée un problème pédagogique sur : %s\\n\\n\" +\n" +
+                    "    \"Format :\\n\" +\n" +
+                    "    \"- Énoncé détaillé\\n\" +\n" +
+                    "    \"- Questions à résoudre\\n\" +\n" +
+                    "    \"- Indices de réflexion\\n\" +\n" +
+                    "    \"- Solution complète";
 
     @Autowired
     private ProblemeRepository problemeRepository;

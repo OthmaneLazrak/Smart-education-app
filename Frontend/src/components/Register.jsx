@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Register.css'; // Assurez-vous d'avoir ce fichier CSS
 
 const Register = () => {
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         nom: "",
         prenom: "",
@@ -63,6 +65,10 @@ const Register = () => {
 
             setSuccess(true);
             setForm({ nom: "", prenom: "", email: "", motDePasse: "", role: "ETUDIANT" });
+            // Redirection vers la page de connexion après 2 secondes
+            setTimeout(() => {
+                navigate('/login');
+            }, 2000);
         } catch (error) {
             setApiError(error.message || "Une erreur de connexion est survenue");
         } finally {

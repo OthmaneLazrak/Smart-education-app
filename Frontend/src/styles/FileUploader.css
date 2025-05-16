@@ -1,0 +1,137 @@
+.file-uploader-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.file-input-wrapper {
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+#file-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px dashed #3498db;
+  border-radius: 8px;
+  background: #f8fafc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#file-input:hover {
+  background: #edf2f7;
+  border-color: #2980b9;
+}
+
+#file-input:disabled {
+  background: #e2e8f0;
+  border-color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+.file-info {
+  background: #f1f7fe;
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+}
+
+.file-info p {
+  margin: 0.5rem 0;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background: #edf2f7;
+  border-radius: 10px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 20px;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  transition: width 0.3s ease;
+  text-align: center;
+  color: white;
+  font-size: 0.9rem;
+  line-height: 20px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.extract-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.extract-button:hover:not(:disabled) {
+  background: #2980b9;
+}
+
+.extract-button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  border-left: 4px solid #ef4444;
+}
+
+.extracted-text-container {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #f0fdf4;
+  border-radius: 6px;
+  border: 1px solid #86efac;
+}
+
+.extracted-text-container h3 {
+  color: #166534;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.extracted-text-container p {
+  margin: 0.5rem 0;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.extracted-text-container strong {
+  color: #166534;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .file-uploader-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .extract-button {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+}

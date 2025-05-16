@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import FileUploader from '../components/FileUploader';
 import axios from 'axios';
+import '../styles/Exam.css'; // Assurez-vous d'avoir ce fichier CSS
+import PDFDownloadButton from '../components/generatePdf';
+
 
 const ExamPage = () => {
     const [exam, setExam] = useState(null);
@@ -60,15 +63,21 @@ const ExamPage = () => {
             )}
 
             {exam && (
-                <div className="generated-content">
-                    <h2>{exam.title}</h2>
-                    <div className="content">
-                        {exam.content.split('\n').map((line, i) => (
-                            <p key={i}>{line}</p>
-                        ))}
-                    </div>
-                </div>
-            )}
+    <>
+        <div className="generated-content">
+            <h2>{exam.title}</h2>
+            <div className="content">
+                {exam.content.split('\n').map((line, i) => (
+                    <p key={i}>{line}</p>
+                ))}
+            </div>
+        </div>
+        <PDFDownloadButton
+            title={exam.title}
+            content={exam.content}
+        />
+    </>
+)}
         </div>
     );
 };

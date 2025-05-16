@@ -19,21 +19,15 @@ import java.util.List;
 public class QuizController {
 
     private static final String QUIZ_PROMPT =
-            "Create 5 multiple choice questions about this text:\\n\" +\n" +
-                    "    \"%s\\n\\n\" +\n" +
-                    "    \"Follow this format EXACTLY:\\n\" +\n" +
-                    "    \"Question 1: [question about the text content]\\n\" +\n" +
-                    "    \"a) [option]\\n\" +\n" +
-                    "    \"b) [option]\\n\" +\n" +
-                    "    \"c) [option]\\n\" +\n" +
-                    "    \"d) [option]\\n\" +\n" +
-                    "    \"Answer: [letter]\\n\\n\" +\n" +
-                    "    \"Rules:\\n\" +\n" +
-                    "    \"- Questions must be about the main concepts in the text\\n\" +\n" +
-                    "    \"- Each question needs exactly one correct answer\\n\" +\n" +
-                    "    \"- Make questions clear and specific\\n\" +\n" +
-                    "    \"- Return only the formatted questions\\n\" +\n" +
-                    "    \"- Generate all questions and answers in French";
+            "Crée 5 QCM sur : %s\n\n" +
+                    "Format :\n" +
+                    "Q1 : [question]\n" +
+                    "a) [option]\n" +
+                    "b) [option]\n" +
+                    "c) [option]\n" +
+                    "d) [option]\n" +
+                    "Réponse : [lettre]\n\n" +
+                    "Règles : concepts clés, une seule bonne réponse, questions précises";
 
     @Autowired
     private QuizRepository quizRepository;
@@ -44,6 +38,8 @@ public class QuizController {
     @PostMapping("/generate")
     public ResponseEntity<?> generateQuiz(@RequestBody Quiz quizRequest) {
         try {
+
+
             String content = quizRequest.getContent();
             if (content == null || content.trim().isEmpty()) {
                 return ResponseEntity.badRequest().body("Le contenu ne peut pas être vide");

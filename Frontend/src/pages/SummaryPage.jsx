@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import FileUploader from '../components/FileUploader';
-import Result from '../components/Result';
 import axios from 'axios';
+import '../styles/Summary.css'; // Assurez-vous d'avoir ce fichier CSS
+import PDFDownloadButton from '../components/generatePdf';
+
 
 const SummaryPage = () => {
     const [summary, setSummary] = useState(null);
@@ -57,16 +59,22 @@ const SummaryPage = () => {
                 </div>
             )}
 
-            {summary && (
-                <div className="summary-result">
-                    <h2>{summary.title}</h2>
-                    <div className="summary-content">
-                        {summary.content.split('\n').map((line, i) => (
-                            <p key={i}>{line}</p>
-                        ))}
-                    </div>
-                </div>
-            )}
+           {summary && (
+    <>
+        <div className="summary-result">
+            <h2>{summary.title}</h2>
+            <div className="summary-content">
+                {summary.content.split('\n').map((line, i) => (
+                    <p key={i}>{line}</p>
+                ))}
+            </div>
+        </div>
+        <PDFDownloadButton
+            title={summary.title}
+            content={summary.content}
+        />
+    </>
+)}
         </div>
     );
 };

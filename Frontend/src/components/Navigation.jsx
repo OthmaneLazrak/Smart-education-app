@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import logo from '../img/download.png';
+import logo from '../img/educ-image.png';
 
 const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);

@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8080/api'; // Changez cette URL si votre API est hébergée ailleurs
+const API_BASE_URL =  axios.create({
+  baseURL: 'http://localhost:8080',
+  headers: {
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
+  }
+}); // Changez cette URL si votre API est hébergée ailleurs
+
 
 export const uploadFile = async (file, choice) => {
     // Liste des choix autorisés

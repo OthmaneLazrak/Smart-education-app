@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import FileUploader from '../components/FileUploader';
 import axios from 'axios';
+import '../styles/TD.css'; // Assurez-vous d'avoir ce fichier CSS
+import PDFDownloadButton from '../components/generatePdf';
+
 
 const TDPage = () => {
     const [td, setTd] = useState(null);
@@ -59,16 +62,22 @@ const TDPage = () => {
                 </div>
             )}
 
-            {td && (
-                <div className="generated-content">
-                    <h2>{td.title}</h2>
-                    <div className="content">
-                        {td.content.split('\n').map((line, i) => (
-                            <p key={i}>{line}</p>
-                        ))}
-                    </div>
-                </div>
-            )}
+           {td && (
+    <>
+        <div className="generated-content">
+            <h2>{td.title}</h2>
+            <div className="content">
+                {td.content.split('\n').map((line, i) => (
+                    <p key={i}>{line}</p>
+                ))}
+            </div>
+        </div>
+        <PDFDownloadButton
+            title={td.title}
+            content={td.content}
+        />
+    </>
+)}
         </div>
     );
 };

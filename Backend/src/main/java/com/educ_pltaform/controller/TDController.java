@@ -18,20 +18,14 @@ import java.util.List;
 public class TDController {
 
     private static final String TD_PROMPT =
-            "Créer un TD sur le sujet suivant:\\n\" +\n" +
-                    "\"%s\\n\\n\" +\n" +
-                    "\"Format à suivre EXACTEMENT:\\n\" +\n" +
-                    "\"Exercice 1: [titre de l'exercice]\\n\" +\n" +
-                    "\"[énoncé détaillé]\\n\" +\n" +
-                    "\"a) [sous-question]\\n\" +\n" +
-                    "\"b) [sous-question]\\n\" +\n" +
-                    "\"c) [sous-question]\\n\\n\" +\n" +
-                    "\"Règles:\\n\" +\n" +
-                    "\"- 3 exercices progressifs\\n\" +\n" +
-                    "\"- Chaque exercice doit avoir des sous-questions\\n\" +\n" +
-                    "\"- Inclure des exemples si nécessaire\\n\" +\n" +
-                    "\"- Difficulté progressive\\n\" +\n" +
-                    "\"- Générer tout le contenu en français";
+            "Crée 3 exercices sur : %s\\n\\n\" +\n" +
+                    "    \"Format :\\n\" +\n" +
+                    "    \"Ex1 : [titre]\\n\" +\n" +
+                    "    \"[énoncé]\\n\" +\n" +
+                    "    \"a) [question]\\n\" +\n" +
+                    "    \"b) [question]\\n\" +\n" +
+                    "    \"c) [question]\\n\\n\" +\n" +
+                    "    \"Difficulté progressive, avec exemples";
 
     @Autowired
     private TDRepository tdRepository;

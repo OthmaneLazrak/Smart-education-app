@@ -48,11 +48,11 @@ const Login = () => {
                 // Rediriger selon le rôle
                 setTimeout(() => {
                     if (response.data.role === 'ENSEIGNANT') {
-                        navigate('/td');
+                        navigate('/');
                     } else {
-                        navigate('/quiz');
+                        navigate('/');
                     }
-                }, 1000);
+                }, 500);
             }
         } catch (err) {
             setError(err.response?.data?.message || 'Une erreur est survenue.');

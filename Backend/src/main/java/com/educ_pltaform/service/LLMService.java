@@ -18,10 +18,10 @@ import java.util.Map;
 @Slf4j
 public class LLMService {
 
-    @Value("${huggingface.api.url}")
+    @Value("${openrouter.api.url}")
     private String llmApiUrl;
 
-    @Value("${huggingface.api.key}")
+    @Value("${openrouter.api.key}")
     private String apiKey;
 
     private final RestTemplate restTemplate;
@@ -36,48 +36,59 @@ public class LLMService {
     @PostConstruct
     private void validateConfig() {
         if (apiKey == null || apiKey.trim().isEmpty()) {
-            throw new IllegalStateException("HuggingFace API key non configurée");
+            throw new IllegalStateException("OpenRouter API key non configurée");
         }
         if (llmApiUrl == null || llmApiUrl.trim().isEmpty()) {
-            throw new IllegalStateException("HuggingFace API URL non configurée");
+            throw new IllegalStateException("OpenRouter API URL non configurée");
         }
-        log.info("Configuration HuggingFace validée");
+        log.info("Configuration OpenRouter validée");
     }
 
     public String generateContent(String prompt, String role) {
         try {
+            log.info("Début génération - Prompt: '{}', Role: '{}'", prompt, role);
+            log.info("URL API: {}", llmApiUrl);
+            Map<String, Object> message = new HashMap<>();
+            message.put("role", "user");
+            message.put("content", role + "\n" + prompt);
+
             Map<String, Object> requestMap = new HashMap<>();
-            requestMap.put("inputs", role + "\n" + prompt);
-            requestMap.put("parameters", Map.of(
-                    "max_length", 4000,
-                    "temperature", 0.5,
-                    "top_p", 1.0,
-                    "return_full_text", false
-            ));
+            requestMap.put("messages", List.of(message));
+            requestMap.put("model", "mistralai/mistral-7b-instruct");
+            requestMap.put("temperature", 0.7);
+            requestMap.put("max_tokens", 4000);
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.set("Authorization", "Bearer " + apiKey);
+            headers.set("HTTP-Referer", "http://localhost:3000");
+            headers.set("X-Title", "Education Platform");
 
             HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(requestMap, headers);
 
+            log.info("Corps de la requête: {}", objectMapper.writeValueAsString(requestMap));
             ResponseEntity<String> response = restTemplate.exchange(
                     llmApiUrl,
                     HttpMethod.POST,
                     requestEntity,
                     String.class
             );
+            log.info("Envoi requête à OpenRouter");
 
             if (!response.getStatusCode().is2xxSuccessful() || response.getBody() == null) {
                 throw new LLMServiceException("Réponse API invalide: " + response.getStatusCode());
             }
 
             JsonNode jsonResponse = objectMapper.readTree(response.getBody());
-            return jsonResponse.path(0).path("generated_text").asText();
+            return jsonResponse.path("choices")
+                    .path(0)
+                    .path("message")
+                    .path("content")
+                    .asText();
 
         } catch (Exception e) {
-            log.error("Erreur lors de l'appel à HuggingFace: {}", e.getMessage());
-            throw new LLMServiceException("Erreur API HuggingFace: " + e.getMessage(), e);
+            log.error("Erreur lors de l'appel à OpenRouter: {}", e.getMessage());
+            throw new LLMServiceException("Erreur API OpenRouter: " + e.getMessage(), e);
         }
     }
 }
